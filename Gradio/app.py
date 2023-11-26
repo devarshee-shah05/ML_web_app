@@ -1,9 +1,12 @@
 import os
 import openai
+import json
 import gradio as gr
 
-
-openai.api_key = "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"
+# Load API key from config.json
+with open('config.json') as f:
+    config_data = json.load(f)
+openai.api_key = config_data.get('openai_api_key', '')
 
 start_sequence = "\nAI:"
 restart_sequence = "\nHuman: "
